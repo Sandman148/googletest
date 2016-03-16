@@ -3,6 +3,7 @@ package com.google.tests;
 import com.google.pages.HomePage;
 import com.google.pages.LoginPage;
 import com.google.testdata.TestUser;
+import com.google.testdata.Urls;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -23,14 +24,12 @@ public class LoginTest {
     private LoginPage loginPage;
     private LoginPage.PasswordWindow passwordWindow;
 
-    private static final String URL = "https://www.google.com.ua";
-
     @BeforeTest
     public void init() {
         File file = new File("C:/Selenium/chromedriver.exe");
         System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
         driver = new ChromeDriver();
-        driver.get(URL);
+        driver.get(Urls.GOOGLE_HOME.toString());
         driver.manage().window().maximize();
     }
 
