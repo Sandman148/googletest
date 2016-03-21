@@ -39,6 +39,11 @@ public class HomePage extends CommonPage {
         signOutBtn.click();
     }
 
+    public InboxPage clickGmailLnk() {
+        gmailLnk.click();
+        return new InboxPage(driver);
+    }
+
     public String getUserName() {
         return userName.getText();
     }
@@ -48,6 +53,7 @@ public class HomePage extends CommonPage {
     }
 
     public HomePage signOut() {
+        waitForElementVisibility(profileBtn);
         clickProfileBtn();
         clickSignOutBtn();
         return this;

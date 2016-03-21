@@ -21,7 +21,7 @@ public abstract class CommonPage {
     }
 
     public void waitForElementVisibility(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
@@ -41,5 +41,12 @@ public abstract class CommonPage {
         } catch (NoSuchElementException exception) {
             return false;
         }
+    }
+
+    public void setTextToInputField(WebElement inp, String text) {
+        waitForElementVisibility(inp);
+        inp.click();
+        inp.clear();
+        inp.sendKeys(text);
     }
 }
