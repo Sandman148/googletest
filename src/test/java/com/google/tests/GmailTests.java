@@ -31,6 +31,12 @@ public class GmailTests extends TestBase {
         inboxPage = homePage.clickGmailLnk();
         newMessageBlock = inboxPage.clickComposeBtn();
         inboxPage = newMessageBlock.sendEmail("testerbox148@gmail.com", "subj", "text");
-        Assert.assertEquals(inboxPage.clickInboxLnk().getFirstEmailSender(), "me", "The e-mail was not sent correctly");
+        Assert.assertEquals(inboxPage.clickInboxLnk().getFirstUnreadEmailSenderName(), "me", "The e-mail was not sent correctly");
+    }
+
+    @Test
+    public void deleteFirstEmail() {
+        inboxPage.deleteFirstEmail();
+        Assert.assertNull(inboxPage.getFirstUnreadEmailSenderElement(), "Unread email still present (should be deleted)");
     }
 }

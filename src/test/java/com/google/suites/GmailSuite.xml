@@ -6,6 +6,7 @@
             <class name="com.google.tests.GmailTests">
                 <methods>
                     <include name="sendEmailToSelf"/>
+                    <include name="deleteFirstEmail"/>
                 </methods>
             </class>
         </classes>

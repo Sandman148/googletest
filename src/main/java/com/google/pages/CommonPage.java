@@ -49,4 +49,14 @@ public abstract class CommonPage {
         inp.clear();
         inp.sendKeys(text);
     }
+
+    public boolean isCheckboxSelected(WebElement element) {
+        return element.getAttribute("aria-checked").contains("true");
+    }
+
+    public void selectCheckbox(WebElement element) {
+        if (!isCheckboxSelected(element)) {
+            element.click();
+        }
+    }
 }

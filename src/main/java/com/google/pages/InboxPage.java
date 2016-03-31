@@ -19,8 +19,14 @@ public class InboxPage extends CommonPage {
     @FindBy(xpath = "//a[contains(text(), 'Inbox')]")
     private WebElement inboxLnk;
 
+    @FindBy(css = ".T-I.J-J5-Ji.nX")
+    private WebElement deleteBtn;
+
     @FindBy(css = ".zF")
-    private List<WebElement> unreadLetterSenders;
+    private List<WebElement> unreadEmailSenders;
+
+    @FindBy(css = ".oZ-jc.T-Jo.J-J5-Ji")
+    private List<WebElement> emailCheckboxes;
 
     public class NewMessageBlock extends CommonPage {
 
@@ -49,7 +55,6 @@ public class InboxPage extends CommonPage {
             sendBtn.click();
             return new InboxPage(driver);
         }
-
     }
 
     public InboxPage(WebDriver driver) {
@@ -68,9 +73,24 @@ public class InboxPage extends CommonPage {
         return new InboxPage(driver);
     }
 
-    public String getFirstEmailSender() {
-        waitForElementVisibility(unreadLetterSenders.get(1));
-        return unreadLetterSenders.get(1).getText();
+    public String getFirstUnreadEmailSenderName() {
+        waitForElementVisibility(unreadEmailSenders.get(1));
+        return unreadEmailSenders.get(1).getText();
+    }
+
+    public WebElement getFirstUnreadEmailSenderElement() {
+        try {
+            waitForElementVisibility(unreadEmailSenders.get(1));
+            return unreadEmailSenders.get(1);
+        } catch (IndexOutOfBoundsException e) {
+            return null;
+        }
+    }
+
+    public void deleteFirstEmail() {
+        selectCheckbox(emailCheckboxes.get(0));
+        waitForElementVisibility(deleteBtn);
+        deleteBtn.click();
     }
 
 }
