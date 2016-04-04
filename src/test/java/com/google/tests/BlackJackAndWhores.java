@@ -12,9 +12,9 @@ import org.testng.annotations.Test;
  */
 public class BlackJackAndWhores extends TestBase{
 
-    WebDriver driver;
-    BlackJackPage blackJackPage;
-    WhoresPage whoresPage;
+    private WebDriver driver;
+    private BlackJackPage blackJackPage;
+    private WhoresPage whoresPage;
 
     @Test
     public void blackJack() {
