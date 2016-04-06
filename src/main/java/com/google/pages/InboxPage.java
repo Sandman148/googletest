@@ -69,7 +69,7 @@ public class InboxPage extends CommonPage {
 
     public InboxPage clickInboxLnk() {
         inboxLnk.click();
-        fixedWait(2000); //TODO change this to some reasonable wait
+        fixedWait(2000);
         return new InboxPage(driver);
     }
 
@@ -88,6 +88,7 @@ public class InboxPage extends CommonPage {
     }
 
     public void deleteFirstEmail() {
+        waitForElementVisibility(emailCheckboxes.get(0));
         selectCheckbox(emailCheckboxes.get(0));
         waitForElementVisibility(deleteBtn);
         deleteBtn.click();

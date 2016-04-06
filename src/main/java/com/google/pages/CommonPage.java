@@ -25,6 +25,11 @@ public abstract class CommonPage {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
+    public void waitForElementToBeClickable(WebElement webElement) {
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        wait.until(ExpectedConditions.elementToBeClickable(webElement));
+    }
+
     public void fixedWait(long milliseconds) {
         try {
             Thread.sleep(milliseconds);

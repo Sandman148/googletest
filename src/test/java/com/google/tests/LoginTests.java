@@ -1,26 +1,15 @@
 package com.google.tests;
 
 import com.google.pages.HomePage;
-import com.google.testdata.TestUser;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 /**
  * Created by abryhas on 14.03.2016.
  */
-public class LoginTest extends TestBase {
+public class LoginTests extends TestBase {
 
     private HomePage homePage;
-
-    @DataProvider
-    public Object[][] userDataProvider() {
-        return new Object[][] { {
-                TestUser.getEmail(),
-                TestUser.getPassword(),
-                TestUser.getFirstName()},
-        };
-    }
 
     @Test(dataProvider = "userDataProvider")
     public void loginToSystemTest(String email, String password, String name) {
