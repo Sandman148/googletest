@@ -1,9 +1,11 @@
 package com.google.tests;
 
 import com.google.pages.GoogleMapsPage;
+import com.google.testdata.TestUser;
 import com.google.testdata.Urls;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 /**
@@ -14,9 +16,11 @@ public class GmapsTests extends TestBase {
     private WebDriver driver;
     private GoogleMapsPage googleMapsPage;
 
-    @Test(dataProvider = "userDataProvider")
-    public void verifySearch(String  email, String password, String name) {
-        signIn(email, password, name);
+    @Test
+    @Parameters({"userNumber"})
+    public void verifySearch(int userNumber) {
+        TestUser user = new TestUser();
+        signIn(user.getEmail(userNumber), user.getPassword(userNumber), user.getFirstName(userNumber));
         driver = getDriver();
         driver.get(Urls.GOOGLE_MAPS.toString());
         googleMapsPage = new GoogleMapsPage(driver);
