@@ -1,7 +1,9 @@
 package com.google.tests;
 
 import com.google.pages.HomePage;
+import com.google.testdata.TestUser;
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 /**
@@ -11,10 +13,12 @@ public class LoginTests extends TestBase {
 
     private HomePage homePage;
 
-    @Test(dataProvider = "userDataProvider")
-    public void loginToSystemTest(String email, String password, String name) {
-        homePage = signIn(email, password, name);
-        Assert.assertEquals(homePage.getUserName(), name, "Names don't match.");
+    @Test
+    @Parameters({"userNumber"})
+    public void loginToSystemTest(int userNumber) {
+        TestUser user = new TestUser();
+        homePage = signIn(user.getEmail(userNumber), user.getPassword(userNumber), user.getFirstName(userNumber));
+        Assert.assertEquals(homePage.getUserName(), user.getFirstName(userNumber), "Names don't match.");
     }
 
     /**

@@ -2,13 +2,11 @@ package com.google.tests;
 
 import com.google.pages.HomePage;
 import com.google.pages.LoginPage;
-import com.google.testdata.TestUser;
 import com.google.testdata.Urls;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.DataProvider;
 
 import java.io.File;
 
@@ -16,7 +14,7 @@ import java.io.File;
  * Created by abryhas on 16.03.2016.
  * Test base to initialize web driver
  */
-public class TestBase {
+public abstract class TestBase {
 
     private WebDriver driver;
     private HomePage homePage;
@@ -47,15 +45,6 @@ public class TestBase {
         passwordWindow = loginPage.setEmail(email);
         homePage = passwordWindow.signIn(password);
         return homePage;
-    }
-
-    @DataProvider
-    public Object[][] userDataProvider() {
-        return new Object[][] { {
-                TestUser.getEmail(),
-                TestUser.getPassword(),
-                TestUser.getFirstName()},
-        };
     }
 
 }
