@@ -63,24 +63,16 @@ public class TestUser {
             //1-dimensional array of single user
             List<String> userData = new ArrayList<String>();
 
-            // Traversing over each row of XLSX file
-            while (rowIterator.hasNext()) {
-                Row row = rowIterator.next();
+            Row row = mySheet.getRow(userNumber);
 
-                // For each row, iterate through each columns
-                Iterator<Cell> cellIterator = row.cellIterator();
-                while (cellIterator.hasNext()) {
-
-                    Cell cell = cellIterator.next();
-                    userData.add(cell.getStringCellValue());
-                }
-
-                usersData.add(userData);
-                userData = new ArrayList<String>();
-
+            // For given row, iterate through each columns
+            Iterator<Cell> cellIterator = row.cellIterator();
+            while (cellIterator.hasNext()) {
+                Cell cell = cellIterator.next();
+                userData.add(cell.getStringCellValue());
             }
 
-            return usersData.get(userNumber);
+            return userData;
 
         } catch (IOException e) {
             e.printStackTrace();
