@@ -38,10 +38,6 @@ public abstract class CommonPage {
         }
     }
 
-    public void driverWait(long seconds) {
-        new WebDriverWait(driver, seconds);
-    }
-
     public boolean isElementPresent(WebElement element) {
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
         try {

@@ -38,7 +38,7 @@ public class GoogleMapsPage extends CommonPage {
     public GoogleMapsPage performSearch(String searchText) {
         waitForElementVisibility(searchInp);
         setTextToInputField(searchInp, searchText);
-        driverWait(10);
+        fixedWait(10000);
         searchBtn.click();
         waitForElementVisibility(searhResultBox);
         return this;
