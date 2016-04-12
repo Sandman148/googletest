@@ -2,6 +2,7 @@ package com.google.tests;
 
 import com.google.pages.HomePage;
 import com.google.pages.LoginPage;
+import com.google.testdata.LocalPathes;
 import com.google.testdata.Urls;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -23,7 +24,7 @@ public abstract class TestBase {
 
     @BeforeTest(alwaysRun = true)
     public void initTest() {
-        File file = new File("C:/Selenium/chromedriver.exe");
+        File file = new File(LocalPathes.CHROMEDRIVER.toString());
         System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
         driver = new ChromeDriver();
         driver.get(Urls.GOOGLE_HOME.toString());

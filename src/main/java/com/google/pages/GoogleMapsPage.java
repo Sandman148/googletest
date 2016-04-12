@@ -1,9 +1,9 @@
 package com.google.pages;
 
+import com.google.utils.Timeouts;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -38,7 +38,7 @@ public class GoogleMapsPage extends CommonPage {
     public GoogleMapsPage performSearch(String searchText) {
         waitForElementVisibility(searchInp);
         setTextToInputField(searchInp, searchText);
-        fixedWait(10000);
+        fixedWait(Timeouts.LONG_MILLIS.getField());
         searchBtn.click();
         waitForElementVisibility(searhResultBox);
         return this;

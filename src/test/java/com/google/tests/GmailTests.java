@@ -2,6 +2,7 @@ package com.google.tests;
 
 import com.google.pages.HomePage;
 import com.google.pages.InboxPage;
+import com.google.testdata.TestEmail;
 import com.google.testdata.TestUser;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
@@ -23,7 +24,7 @@ public class GmailTests extends TestBase {
         homePage = signIn(user.getEmail(userNumber), user.getPassword(userNumber), user.getFirstName(userNumber));
         inboxPage = homePage.clickGmailLnk();
         newMessageBlock = inboxPage.clickComposeBtn();
-        inboxPage = newMessageBlock.sendEmail("testerbox148@gmail.com", "subj", "text");
+        inboxPage = newMessageBlock.sendEmail(user.getEmail(userNumber), TestEmail.getSubject(), TestEmail.getText());
         Assert.assertEquals(inboxPage.clickInboxLnk().getFirstUnreadEmailSenderName(), "me",
                 "The e-mail was not sent correctly");
     }

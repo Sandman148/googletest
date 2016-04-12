@@ -1,5 +1,6 @@
 package com.google.pages;
 
+import com.google.utils.Timeouts;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,12 +22,12 @@ public abstract class CommonPage {
     }
 
     public void waitForElementVisibility(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(driver, 20);
+        WebDriverWait wait = new WebDriverWait(driver, Timeouts.COMMON_TIMEOUT.getField());
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
     public void waitForElementToBeClickable(WebElement webElement) {
-        WebDriverWait wait = new WebDriverWait(driver, 20);
+        WebDriverWait wait = new WebDriverWait(driver, Timeouts.COMMON_TIMEOUT.getField());
         wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 

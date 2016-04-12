@@ -1,5 +1,6 @@
 package com.google.pages;
 
+import com.google.utils.Timeouts;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,7 +33,7 @@ public class LoginPage extends CommonPage{
 
     public PasswordWindow setEmail(String email) {
         setEmailInp(email);
-        fixedWait(1000);
+        fixedWait(Timeouts.SHORT_MILLIS.getField());
         clickNextBtn();
         return new PasswordWindow(driver);
     }
@@ -62,7 +63,7 @@ public class LoginPage extends CommonPage{
 
         public HomePage signIn(String password) {
             setPasswordInp(password);
-            fixedWait(1000);
+            fixedWait(Timeouts.SHORT_MILLIS.getField());
             clickSignInBtn();
             return new HomePage(driver);
         }

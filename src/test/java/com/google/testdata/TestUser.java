@@ -1,5 +1,6 @@
 package com.google.testdata;
 
+import com.google.utils.Constants;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -24,19 +25,19 @@ public class TestUser {
      * @param number of desired user in the .xslx table
      */
     public String getEmail(int number) {
-        return getUserData(number).get(0);
+        return getUserData(number).get(Constants.XLSX_FIRST_CELL.getField());
     }
 
     public String getPassword(int number) {
-        return getUserData(number).get(1);
+        return getUserData(number).get(Constants.XLSX_SECOND_CELL.getField());
     }
 
     public String getFirstName(int number) {
-        return getUserData(number).get(2);
+        return getUserData(number).get(Constants.XLSX_THIRD_CELL.getField());
     }
 
     public String getLastName(int number) {
-        return getUserData(number).get(3);
+        return getUserData(number).get(Constants.XLSX_FOURTH_CELL.getField());
     }
 
     /**
@@ -45,7 +46,7 @@ public class TestUser {
      */
     private List<String> getUserData(int userNumber) {
         try {
-            File userFile = new File("D://googletest/src/test/resources/users.xlsx");
+            File userFile = new File(LocalPathes.USERS_XLSX.toString());
             FileInputStream fis = new FileInputStream(userFile);
 
             // Finds the workbook instance for XLSX file

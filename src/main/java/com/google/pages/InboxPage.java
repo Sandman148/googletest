@@ -1,5 +1,7 @@
 package com.google.pages;
 
+import com.google.utils.Constants;
+import com.google.utils.Timeouts;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -69,19 +71,22 @@ public class InboxPage extends CommonPage {
 
     public InboxPage clickInboxLnk() {
         inboxLnk.click();
-        fixedWait(2000);
+        fixedWait(Timeouts.SHORT_MILLIS.getField());
         return new InboxPage(driver);
     }
 
+    /**
+     * @return first unread email sender name
+     */
     public String getFirstUnreadEmailSenderName() {
-        waitForElementVisibility(unreadEmailSenders.get(1));
-        return unreadEmailSenders.get(1).getText();
+        waitForElementVisibility(unreadEmailSenders.get(Constants.FIRST_UNREAD_EMAIL.getField()));
+        return unreadEmailSenders.get(Constants.FIRST_UNREAD_EMAIL.getField()).getText();
     }
 
     public WebElement getFirstUnreadEmailSenderElement() {
         try {
-            waitForElementVisibility(unreadEmailSenders.get(1));
-            return unreadEmailSenders.get(1);
+            waitForElementVisibility(unreadEmailSenders.get(Constants.FIRST_UNREAD_EMAIL.getField()));
+            return unreadEmailSenders.get(Constants.FIRST_UNREAD_EMAIL.getField());
         } catch (IndexOutOfBoundsException e) {
             return null;
         }
@@ -92,6 +97,7 @@ public class InboxPage extends CommonPage {
         selectCheckbox(emailCheckboxes.get(0));
         waitForElementVisibility(deleteBtn);
         deleteBtn.click();
+        fixedWait(Timeouts.SHORT_MILLIS.getField());
     }
 
 }
