@@ -32,7 +32,7 @@ public abstract class TestBase {
             System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
             driver = new ChromeDriver();
         } else if (browser.equals("firefox")) {
-            driver = new FirefoxDriver();    //TODO doesn't work!!
+            driver = new FirefoxDriver();
         } else {
             driver = null;
             System.out.println("Browser named '" + browser + "' not supported!");
