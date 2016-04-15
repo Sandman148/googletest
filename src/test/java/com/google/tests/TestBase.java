@@ -34,8 +34,7 @@ public abstract class TestBase {
         } else if (browser.equals("firefox")) {
             driver = new FirefoxDriver();
         } else {
-            driver = null;
-            System.out.println("Browser named '" + browser + "' not supported!");
+            System.err.println("Browser named '" + browser + "' not supported!");
         }
         driver.get(Urls.GOOGLE_HOME.toString());
         driver.manage().window().maximize();

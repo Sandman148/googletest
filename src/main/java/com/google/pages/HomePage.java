@@ -25,7 +25,7 @@ public class HomePage extends CommonPage {
     private WebElement signOutBtn;
 
     @FindBy(css = ".gb_zc.gb_Rc")
-    private WebElement noThanks;
+    private WebElement noThanksBtn;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -53,10 +53,12 @@ public class HomePage extends CommonPage {
 
     public void clickProfileBtn() {
         waitForElementVisibility(profileBtn);
+
         //for Firefox browser
-        if (isElementPresent(noThanks)) {
-            noThanks.click();
+        if (isElementPresent(noThanksBtn)) {
+            noThanksBtn.click();
         }
+
         profileBtn.click();
     }
 
