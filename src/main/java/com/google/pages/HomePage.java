@@ -24,6 +24,9 @@ public class HomePage extends CommonPage {
     @FindBy(id = "gb_71")
     private WebElement signOutBtn;
 
+    @FindBy(css = ".gb_zc.gb_Rc")
+    private WebElement noThanksBtn;
+
     public HomePage(WebDriver driver) {
         super(driver);
         waitForElementVisibility(gmailLnk);
@@ -49,11 +52,17 @@ public class HomePage extends CommonPage {
     }
 
     public void clickProfileBtn() {
+        waitForElementVisibility(profileBtn);
+
+        //for Firefox browser
+        if (isElementPresent(noThanksBtn)) {
+            noThanksBtn.click();
+        }
+
         profileBtn.click();
     }
 
     public HomePage signOut() {
-        waitForElementVisibility(profileBtn);
         clickProfileBtn();
         clickSignOutBtn();
         return this;
