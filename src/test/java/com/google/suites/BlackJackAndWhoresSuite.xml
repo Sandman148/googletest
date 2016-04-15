@@ -2,6 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="BJAW Suite" verbose="10" data-provider-thread-count="1">
     <test name="BJAW Test">
+        <parameter name="browser" value="chrome"/>
         <classes>
             <class name="com.google.tests.BlackJackAndWhores">
                 <methods>

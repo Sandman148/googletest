@@ -6,8 +6,10 @@ import com.google.testdata.LocalPathes;
 import com.google.testdata.Urls;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 
 import java.io.File;
 
@@ -23,10 +25,18 @@ public abstract class TestBase {
     private LoginPage.PasswordWindow passwordWindow;
 
     @BeforeTest(alwaysRun = true)
-    public void initTest() {
-        File file = new File(LocalPathes.CHROMEDRIVER.toString());
-        System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-        driver = new ChromeDriver();
+    @Parameters({"browser"})
+    public void initTest(String browser) {
+        if(browser.equals("chrome")) {
+            File file = new File(LocalPathes.CHROMEDRIVER.toString());
+            System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
+            driver = new ChromeDriver();
+        } else if (browser.equals("firefox")) {
+            driver = new FirefoxDriver();    //TODO doesn't work!!
+        } else {
+            driver = null;
+            System.out.println("Browser named '" + browser + "' not supported!");
+        }
         driver.get(Urls.GOOGLE_HOME.toString());
         driver.manage().window().maximize();
     }

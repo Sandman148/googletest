@@ -2,6 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Gmail Suite" verbose="10" data-provider-thread-count="1">
     <test name="Gmail Test">
+        <parameter name="browser" value="chrome"/>
         <parameter name="userNumber" value="0"/>
         <classes>
             <class name="com.google.tests.GmailTests">
