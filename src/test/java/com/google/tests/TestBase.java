@@ -27,14 +27,18 @@ public abstract class TestBase {
     @BeforeTest(alwaysRun = true)
     @Parameters({"browser"})
     public void initTest(String browser) {
-        if(browser.equals("chrome")) {
-            File file = new File(LocalPathes.CHROMEDRIVER.toString());
-            System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-            driver = new ChromeDriver();
-        } else if (browser.equals("firefox")) {
-            driver = new FirefoxDriver();
-        } else {
-            System.err.println("Browser named '" + browser + "' not supported!");
+        switch (browser){
+            case "chrome":
+                File file = new File(LocalPathes.CHROMEDRIVER.toString());
+                System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
+                driver = new ChromeDriver();
+                break;
+            case "firefox":
+                driver = new FirefoxDriver();
+                break;
+            default:
+                System.err.println("Browser named '" + browser + "' not supported!");
+                break;
         }
         driver.get(Urls.GOOGLE_HOME.toString());
         driver.manage().window().maximize();
