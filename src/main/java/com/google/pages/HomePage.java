@@ -24,7 +24,7 @@ public class HomePage extends CommonPage {
     @FindBy(id = "gb_71")
     private WebElement signOutBtn;
 
-    @FindBy(css = ".gb_zc.gb_Rc")
+    @FindBy(css = "[title='No thanks']")
     private WebElement noThanksBtn;
 
     public HomePage(WebDriver driver) {
