@@ -4,6 +4,7 @@ import com.google.utils.Timeouts;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import ru.yandex.qatools.allure.annotations.Step;
 
 import java.util.List;
 
@@ -35,6 +36,7 @@ public class GoogleMapsPage extends CommonPage {
         waitForElementVisibility(searchBox);
     }
 
+    @Step("Perform search")
     public GoogleMapsPage performSearch(String searchText) {
         waitForElementVisibility(searchInp);
         setTextToInputField(searchInp, searchText);
@@ -44,6 +46,7 @@ public class GoogleMapsPage extends CommonPage {
         return this;
     }
 
+    @Step("Get search result")
     public String getSearchResultTitle(int titleNumber) {
         return searchResultTitles.get(titleNumber).getText();
     }

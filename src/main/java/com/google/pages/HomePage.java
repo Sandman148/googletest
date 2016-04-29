@@ -3,6 +3,7 @@ package com.google.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import ru.yandex.qatools.allure.annotations.Step;
 
 /**
  * Created by abryhas on 14.03.2016.
@@ -42,6 +43,7 @@ public class HomePage extends CommonPage {
         signOutBtn.click();
     }
 
+    @Step("Click Gmail link")
     public InboxPage clickGmailLnk() {
         gmailLnk.click();
         return new InboxPage(driver);
@@ -62,6 +64,7 @@ public class HomePage extends CommonPage {
         profileBtn.click();
     }
 
+    @Step("Sign out")
     public HomePage signOut() {
         clickProfileBtn();
         clickSignOutBtn();

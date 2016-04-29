@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import ru.yandex.qatools.allure.annotations.Step;
 
 import java.util.List;
 
@@ -48,6 +49,7 @@ public class InboxPage extends CommonPage {
             super(driver);
         }
 
+        @Step("Send email")
         public InboxPage sendEmail(String recipient, String subject, String text) {
             setTextToInputField(recipientsInp, recipient);
             Actions act = new Actions(driver);
@@ -64,11 +66,13 @@ public class InboxPage extends CommonPage {
         waitForElementVisibility(composeBtn);
     }
 
+    @Step("Click 'Compose' button")
     public NewMessageBlock clickComposeBtn() {
         composeBtn.click();
         return new NewMessageBlock(driver);
     }
 
+    @Step("Click Inbox link")
     public InboxPage clickInboxLnk() {
         inboxLnk.click();
         fixedWait(Timeouts.SHORT_MILLIS.getField());
@@ -78,11 +82,13 @@ public class InboxPage extends CommonPage {
     /**
      * @return first unread email sender name
      */
+    @Step("Get the name of first unread e-mail sender")
     public String getFirstUnreadEmailSenderName() {
         waitForElementVisibility(unreadEmailSenders.get(Constants.FIRST_UNREAD_EMAIL.getField()));
         return unreadEmailSenders.get(Constants.FIRST_UNREAD_EMAIL.getField()).getText();
     }
 
+    @Step("Get the WebElement of first unread e-mail sender")
     public WebElement getFirstUnreadEmailSenderElement() {
         try {
             waitForElementVisibility(unreadEmailSenders.get(Constants.FIRST_UNREAD_EMAIL.getField()));
@@ -92,6 +98,7 @@ public class InboxPage extends CommonPage {
         }
     }
 
+    @Step("Delete first email")
     public void deleteFirstEmail() {
         waitForElementVisibility(emailCheckboxes.get(0));
         selectCheckbox(emailCheckboxes.get(0));
