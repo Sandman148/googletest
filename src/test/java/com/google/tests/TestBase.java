@@ -10,6 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
+import ru.yandex.qatools.allure.annotations.Step;
 
 import java.io.File;
 
@@ -53,6 +54,7 @@ public abstract class TestBase {
         return this.driver;
     }
 
+    @Step("Sign in to google.com")
     public HomePage signIn(String email, String password, String name) {
         homePage = new HomePage(driver);
         loginPage = homePage.clickLoginBtn();
