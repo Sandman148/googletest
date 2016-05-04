@@ -26,7 +26,10 @@ public class GoogleMapsPage extends CommonPage {
     private WebElement searchBtn;
 
     @FindBy(xpath = "//h3[@class='widget-pane-section-result-title']/span")
-    private List<WebElement> searchResultTitles;
+    private List<WebElement> multipleSearchResultTitles;
+
+    @FindBy(xpath = "//h1")
+    private WebElement singleSearchResultTitle;
 
     @FindBy(css = ".widget-pane-section-listbox")
     private WebElement searhResultBox;
@@ -42,14 +45,14 @@ public class GoogleMapsPage extends CommonPage {
         setTextToInputField(searchInp, searchText);
         fixedWait(Timeouts.LONG_MILLIS.getField());
         searchBtn.click();
-        waitForElementVisibility(searhResultBox);
         return this;
     }
 
     @Step("Get search result")
     public String getSearchResultTitle(int titleNumber) {
-        return searchResultTitles.get(titleNumber).getText();
+        //for the case when search returns multiple results
+        waitForElementVisibility(searhResultBox);
+        return multipleSearchResultTitles.get(titleNumber).getText();
     }
-
 
 }

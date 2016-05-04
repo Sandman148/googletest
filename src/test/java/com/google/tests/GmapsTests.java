@@ -27,4 +27,13 @@ public class GmapsTests extends TestBase {
         Assert.assertTrue(googleMapsPage.performSearch("softserve").getSearchResultTitle(0).contains("SoftServe"),
                 "Test result and searched text don't match.");
     }
+
+    @Test
+    public void verifySearchWithoutLogin() {
+        driver = getDriver();
+        driver.get(Urls.GOOGLE_MAPS.toString());
+        googleMapsPage = new GoogleMapsPage(driver);
+        Assert.assertTrue(googleMapsPage.performSearch("softserve").getSearchResultTitle(0).contains("SoftServe"),
+                "Test result and searched text don't match.");
+    }
 }

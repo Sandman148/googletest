@@ -12,6 +12,16 @@
             </class>
         </classes>
     </test>
+    <test name="Search without logging in">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.google.tests.GmapsTests">
+                <methods>
+                    <include name="verifySearchWithoutLogin"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
 
     <listeners>
         <listener class-name="org.uncommons.reportng.HTMLReporter"/>
