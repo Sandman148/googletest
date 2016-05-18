@@ -7,6 +7,7 @@ import com.google.testdata.TestUser;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import ru.yandex.qatools.allure.annotations.Features;
 
 /**
  * Created by abryhas on 16.03.2016.
@@ -19,6 +20,7 @@ public class GmailTests extends TestBase {
 
     @Test
     @Parameters({"userNumber"})
+    @Features({"Gmail tests"})
     public void sendEmailToSelf(int userNumber) {
         TestUser user = new TestUser();
         homePage = signIn(user.getEmail(userNumber), user.getPassword(userNumber), user.getFirstName(userNumber));
@@ -30,6 +32,7 @@ public class GmailTests extends TestBase {
     }
 
     @Test
+    @Features({"Cleanup"})
     public void deleteFirstEmail() {
         inboxPage.deleteFirstEmail();
         Assert.assertNull(inboxPage.getFirstUnreadEmailSenderElement(), "Unread email still present (should be deleted)");

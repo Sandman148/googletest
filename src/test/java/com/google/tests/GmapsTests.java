@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import ru.yandex.qatools.allure.annotations.Features;
 
 /**
  * Created by abryhas on 05/04/2016.
@@ -18,6 +19,7 @@ public class GmapsTests extends TestBase {
 
     @Test
     @Parameters({"userNumber"})
+    @Features({"Gmaps tests"})
     public void verifySearch(int userNumber) {
         TestUser user = new TestUser();
         signIn(user.getEmail(userNumber), user.getPassword(userNumber), user.getFirstName(userNumber));
@@ -29,6 +31,7 @@ public class GmapsTests extends TestBase {
     }
 
     @Test
+    @Features({"Gmaps tests"})
     public void verifySearchWithoutLogin() {
         driver = getDriver();
         driver.get(Urls.GOOGLE_MAPS.toString());
