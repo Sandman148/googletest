@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Log In Suite" verbose="10" data-provider-thread-count="1">
     <test name="Login_Test">
-        <parameter name="browser" value="firefox"/>
+        <parameter name="browser" value="chrome"/>
         <parameter name="userNumber" value="0"/>
         <classes>
             <class name="com.google.tests.LoginTests">

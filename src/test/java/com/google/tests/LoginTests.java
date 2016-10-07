@@ -20,7 +20,7 @@ public class LoginTests extends TestBase {
     public void loginToSystemTest(int userNumber) {
         TestUser user = new TestUser();
         homePage = signIn(user.getEmail(userNumber), user.getPassword(userNumber), user.getFirstName(userNumber));
-        Assert.assertEquals(homePage.getUserName(), user.getFirstName(userNumber), "Names don't match.");
+        Assert.assertTrue(homePage.getUserName().contains(user.getFirstName(userNumber)), "Names don't match.");
     }
 
     /**

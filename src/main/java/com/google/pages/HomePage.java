@@ -16,7 +16,7 @@ public class HomePage extends CommonPage {
     @FindBy(linkText = "Gmail")
     private WebElement gmailLnk;
 
-    @FindBy(css = ".gb_P.gb_R")
+    @FindBy(css = ".gb_tb")
     private WebElement userName;
 
     @FindBy(css = ".gbii")
@@ -50,7 +50,11 @@ public class HomePage extends CommonPage {
     }
 
     public String getUserName() {
-        return userName.getText();
+        clickProfileBtn();
+        waitForElementVisibility(userName);
+        String name = userName.getText();
+        clickProfileBtn();
+        return name;
     }
 
     public void clickProfileBtn() {
