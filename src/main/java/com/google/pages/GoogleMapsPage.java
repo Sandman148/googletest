@@ -1,6 +1,7 @@
 package com.google.pages;
 
 import com.google.utils.Timeouts;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -50,9 +51,17 @@ public class GoogleMapsPage extends CommonPage {
 
     @Step("Get search result")
     public String getSearchResultTitle(int titleNumber) {
-        //for the case when search returns multiple results
-        waitForElementVisibility(searhResultBox);
-        return multipleSearchResultTitles.get(titleNumber).getText();
+        String title;
+        fixedWait(Timeouts.LONG_MILLIS.getField());
+        if (isElementPresent(singleSearchResultTitle)) {
+            //for the case when search returns single result
+            title = singleSearchResultTitle.getText();
+        } else if (isElementPresent(multipleSearchResultTitles.get(0))) {
+            //for the case when search returns multiple results
+            title = multipleSearchResultTitles.get(titleNumber).getText();
+        } else {
+            title = null;
+        }
+        return title;
     }
-
 }

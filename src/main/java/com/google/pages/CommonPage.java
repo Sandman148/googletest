@@ -46,6 +46,8 @@ public abstract class CommonPage {
             return true;
         } catch (NoSuchElementException exception) {
             return false;
+        } catch (IndexOutOfBoundsException exception) {
+            return false;
         }
     }
 

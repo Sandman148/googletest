@@ -26,7 +26,7 @@ public class GmapsTests extends TestBase {
         driver = getDriver();
         driver.get(Urls.GOOGLE_MAPS.toString());
         googleMapsPage = new GoogleMapsPage(driver);
-        Assert.assertTrue(googleMapsPage.performSearch("softserve").getSearchResultTitle(0).contains("SoftServe"),
+        Assert.assertTrue(googleMapsPage.performSearch("Symphony Solutions").getSearchResultTitle(0).contains("Symphony Solutions"),
                 "Test result and searched text don't match.");
     }
 
@@ -36,7 +36,7 @@ public class GmapsTests extends TestBase {
         driver = getDriver();
         driver.get(Urls.GOOGLE_MAPS.toString());
         googleMapsPage = new GoogleMapsPage(driver);
-        Assert.assertTrue(googleMapsPage.performSearch("softserve").getSearchResultTitle(0).contains("SoftServe"),
+        Assert.assertTrue(googleMapsPage.performSearch("Symphony Solutions").getSearchResultTitle(0).contains("Symphony Solutions"),
                 "Test result and searched text don't match.");
     }
 }
