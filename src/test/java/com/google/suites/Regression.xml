@@ -5,6 +5,7 @@
         <suite-file path="../suites/LogInSuite.xml"/>
         <suite-file path="../suites/GmailSuite.xml"/>
         <suite-file path="../suites/GmapsSuite.xml"/>
+        <suite-file path="../suites/BlackJackAndWhoresSuite.xml"/>
     </suite-files>
 
     <listeners>

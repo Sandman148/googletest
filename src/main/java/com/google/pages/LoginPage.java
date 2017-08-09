@@ -10,10 +10,10 @@ import org.openqa.selenium.support.FindBy;
  */
 public class LoginPage extends CommonPage{
 
-    @FindBy(id = "Email")
+    @FindBy(id = "identifierId")
     private WebElement emailInp;
 
-    @FindBy(id = "next")
+    @FindBy(id = "identifierNext")
     private WebElement nextBtn;
 
     public LoginPage(WebDriver driver) {
@@ -40,10 +40,10 @@ public class LoginPage extends CommonPage{
 
     public class PasswordWindow extends CommonPage {
 
-        @FindBy(id = "Passwd")
+        @FindBy(css = "[name='password']")
         private WebElement passwordInp;
 
-        @FindBy(id = "signIn")
+        @FindBy(id = "passwordNext")
         private WebElement signInBtn;
 
         public PasswordWindow(WebDriver driver) {

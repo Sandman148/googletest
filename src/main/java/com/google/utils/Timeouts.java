@@ -7,7 +7,7 @@ public enum Timeouts {
     COMMON_TIMEOUT(20),
     SHORT_MILLIS(2000),
     LONG_MILLIS(8000),
-    BLACKJACK_TIMEOUT(45000);
+    BLACKJACK_TIMEOUT(15000);
 
     private long field;
 
