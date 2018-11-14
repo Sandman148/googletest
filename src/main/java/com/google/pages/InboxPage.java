@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class InboxPage extends CommonPage {
 
-    @FindBy(xpath = "//div[contains(text(), 'COMPOSE')]")
+    @FindBy(css = ".T-I.J-J5-Ji.T-I-KE.L3")
     private WebElement composeBtn;
 
     @FindBy(xpath = "//a[contains(text(), 'Inbox')]")

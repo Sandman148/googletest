@@ -6,6 +6,7 @@ import com.google.testdata.LocalPathes;
 import com.google.testdata.Urls;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -32,7 +33,9 @@ public abstract class TestBase {
             case "chrome":
                 File file = new File(LocalPathes.CHROMEDRIVER.toString());
                 System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-                driver = new ChromeDriver();
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--start-maximized");
+                driver = new ChromeDriver(options);
                 break;
             case "firefox":
                 driver = new FirefoxDriver();
@@ -42,7 +45,6 @@ public abstract class TestBase {
                 break;
         }
         driver.get(Urls.GOOGLE_HOME.toString());
-        driver.manage().window().maximize();
     }
 
     @AfterTest(alwaysRun = true)

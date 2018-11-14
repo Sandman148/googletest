@@ -16,7 +16,7 @@ public class HomePage extends CommonPage {
     @FindBy(linkText = "Gmail")
     private WebElement gmailLnk;
 
-    @FindBy(css = ".gb_tb.gb_ub")
+    @FindBy(css = ".gb_Db.gb_Eb")
     private WebElement userName;
 
     @FindBy(css = ".gbii")

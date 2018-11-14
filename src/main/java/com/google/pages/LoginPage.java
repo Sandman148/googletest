@@ -22,9 +22,7 @@ public class LoginPage extends CommonPage{
     }
 
     private void setEmailInp(String email) {
-        emailInp.click();
-        emailInp.clear();
-        emailInp.sendKeys(email);
+        setTextToInputField(emailInp, email);
     }
 
     private void clickNextBtn() {
@@ -32,8 +30,8 @@ public class LoginPage extends CommonPage{
     }
 
     public PasswordWindow setEmail(String email) {
-        setEmailInp(email);
         fixedWait(Timeouts.SHORT_MILLIS.getField());
+        setEmailInp(email);
         clickNextBtn();
         return new PasswordWindow(driver);
     }
@@ -62,6 +60,7 @@ public class LoginPage extends CommonPage{
         }
 
         public HomePage signIn(String password) {
+            fixedWait(Timeouts.SHORT_MILLIS.getField());
             setPasswordInp(password);
             fixedWait(Timeouts.SHORT_MILLIS.getField());
             clickSignInBtn();
